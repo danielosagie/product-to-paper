@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Primary button",
+    "route": "/",
+    "pick": "[...document.querySelectorAll('button,a[role=button],a')].find(el => el.textContent.trim() === 'Get started')",
+    "states": ["default", "hover"]
+  },
+  {
+    "name": "Secondary button",
+    "route": "/",
+    "pick": "[...document.querySelectorAll('button,a[role=button],a')].find(el => el.textContent.trim() === 'Learn more')",
+    "states": ["default", "focus-visible", "active"]
+  },
+  {
+    "name": "Feature card",
+    "route": "/",
+    "pick": "(() => { const label = [...document.querySelectorAll('h2,h3,p')].find(el => el.textContent.trim() === 'Collaborate with your team'); for (let el = label?.parentElement; el && el !== document.body; el = el.parentElement) { const s = getComputedStyle(el); if (parseFloat(s.borderTopWidth) > 0 && s.borderTopStyle !== 'none') return el; } return null; })()",
+    "states": ["default", "hover"]
+  },
+  {
+    "name": "Submit button",
+    "route": "/contact",
+    "pick": "[...document.querySelectorAll('button')].find(el => el.textContent.trim() === 'Submit')",
+    "states": ["default", "disabled"]
+  }
+]

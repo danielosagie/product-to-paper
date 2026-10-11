@@ -1,0 +1,26 @@
+{
+  "name": "paper-pull",
+  "version": "0.1.0",
+  "description": "Import web pages and elements into editable, token-bound Paper layers over CDP",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "paper-pull": "./paper-pull.mjs"
+  },
+  "scripts": {
+    "start": "node paper-pull.mjs --help",
+    "test": "node --test"
+  },
+  "files": [
+    "paper-pull.mjs",
+    "lib",
+    "elements.example.json",
+    "README.md"
+  ],
+  "dependencies": {
+    "acorn": "^8.15.0",
+    "playwright-core": "^1.64.0"
+  }
+}

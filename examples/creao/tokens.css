@@ -1,0 +1,15 @@
+:root {
+  --color-grey-0: #FEFDFB; --color-grey-100: #F8F6F3; --color-grey-200: #EBE7E2; --color-grey-300: #DFDAD3;
+  --color-grey-400: #A8A09A; --color-grey-500: #6E6863; --color-grey-600: #46423F; --color-grey-800: #2B2926; --color-grey-950: #16181A;
+  --color-background: var(--color-grey-100); --color-surface: var(--color-grey-0); --color-surface-alt: #F0EDE8;
+  --color-surface-elevated: var(--color-grey-200); --color-surface-raised: var(--color-grey-300); --color-chrome: #F4F1ED;
+  --color-foreground: var(--color-grey-950); --color-muted-foreground: var(--color-grey-500); --color-border: #E6E2DB;
+  --color-primary: var(--color-grey-950); --color-primary-foreground: #F3ECD8; --color-secondary: var(--color-grey-200);
+  --color-destructive: #6E2F2C; --color-success: #4A6552; --color-petrol: #4A5560; --color-warning: #A86B1D; --color-ring: var(--color-grey-950);
+  --color-credit-plan: #F2B447; --color-credit-purchased: #8D8CF6; --color-credit-reward: #48C98A; --color-credit-daily: #3FC3E8;
+  --font-sans: Instrument Sans; --font-display: DM Sans; --font-serif: EB Garamond; --font-mono: JetBrains Mono; --font-data: DM Mono;
+  --text-xs: 12px; --text-sm: 14px; --text-base: 16px; --text-lg: 18px; --text-xl: 20px; --text-2xl: 24px; --text-3xl: 30px; --text-4xl: 36px;
+  --font-weight-normal: 400; --font-weight-medium: 500; --font-weight-semibold: 600;
+  --spacing-1: 4px; --spacing-2: 8px; --spacing-3: 12px; --spacing-4: 16px; --spacing-6: 24px; --spacing-8: 32px; --spacing-12: 48px;
+  --radius-sm: 4px; --radius-md: 6px; --radius-lg: 8px; --radius-xl: 12px; --radius-2xl: 16px; --radius-3xl: 24px;
+}

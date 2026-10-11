@@ -1,0 +1,410 @@
+[
+ {
+  "family": "Button",
+  "variant": "primary (Create agent)",
+  "route": "/apps",
+  "pick": "[...document.querySelectorAll('button,a')].find(b=>b.getBoundingClientRect().width>0&&b.innerText.trim()===\"Create agent\")",
+  "states": [
+   "default",
+   "hover",
+   "focus-visible",
+   "active"
+  ]
+ },
+ {
+  "family": "Button",
+  "variant": "secondary (Import)",
+  "route": "/apps",
+  "pick": "[...document.querySelectorAll('button,a')].find(b=>b.getBoundingClientRect().width>0&&b.innerText.trim()===\"Import\")",
+  "states": [
+   "default",
+   "hover",
+   "focus-visible"
+  ]
+ },
+ {
+  "family": "Button",
+  "variant": "icon (sidebar search)",
+  "route": "/apps",
+  "pick": "[...document.querySelectorAll('button,a')].find(b=>/search/i.test(b.getAttribute('aria-label')||''))",
+  "states": [
+   "default",
+   "hover"
+  ]
+ },
+ {
+  "family": "Button",
+  "variant": "primary (Upload)",
+  "route": "/files",
+  "pick": "[...document.querySelectorAll('button,a')].find(b=>b.getBoundingClientRect().width>0&&b.innerText.trim()===\"Upload\")",
+  "states": [
+   "default",
+   "hover"
+  ]
+ },
+ {
+  "family": "Button",
+  "variant": "ghost (New folder)",
+  "route": "/files",
+  "pick": "[...document.querySelectorAll('button,a')].find(b=>b.getBoundingClientRect().width>0&&b.innerText.trim()===\"New folder\")",
+  "states": [
+   "default",
+   "hover"
+  ]
+ },
+ {
+  "family": "Button",
+  "variant": "primary disabled (Generate)",
+  "route": "/video",
+  "pick": "[...document.querySelectorAll('button,a')].find(b=>b.getBoundingClientRect().width>0&&b.innerText.trim().startsWith(\"Generate\"))",
+  "states": [
+   "disabled"
+  ]
+ },
+ {
+  "family": "Button",
+  "variant": "card CTA ink (Try now)",
+  "route": "/discover",
+  "pick": "[...document.querySelectorAll('button,a')].find(b=>b.getBoundingClientRect().width>0&&b.innerText.trim().startsWith(\"Try now\"))",
+  "states": [
+   "default",
+   "hover"
+  ]
+ },
+ {
+  "family": "Button",
+  "variant": "promo ink (Open Team Pulse)",
+  "route": "/chat",
+  "pick": "[...document.querySelectorAll('button,a')].find(b=>b.getBoundingClientRect().width>0&&b.innerText.trim().startsWith(\"Open Team Pulse\"))",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Button",
+  "variant": "connector add (+)",
+  "route": "/integrations",
+  "pick": "[...document.querySelectorAll('button,a')].find(b=>/add|connect|install/i.test(b.getAttribute('aria-label')||''))",
+  "states": [
+   "default",
+   "hover"
+  ]
+ },
+ {
+  "family": "Input",
+  "variant": "search h40 (Agents)",
+  "route": "/apps",
+  "pick": "document.querySelector('input[placeholder^=\"Search agents\"]')?.parentElement",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Input",
+  "variant": "search input focus (Agents)",
+  "route": "/apps",
+  "pick": "document.querySelector('input[placeholder^=\"Search agents\"]')",
+  "states": [
+   "focus-visible"
+  ]
+ },
+ {
+  "family": "Input",
+  "variant": "search h32 (Connectors)",
+  "route": "/integrations",
+  "pick": "document.querySelector('input[placeholder^=\"Search\"]')?.parentElement",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Input",
+  "variant": "search h32 (Files)",
+  "route": "/files",
+  "pick": "document.querySelector('input[placeholder^=\"Search files\"]')?.parentElement",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Input",
+  "variant": "chat composer",
+  "route": "/chat",
+  "pick": "document.querySelector('textarea')?.closest('[class*=\"rounded-3xl\"]')||document.querySelector('textarea')?.parentElement?.parentElement",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Select",
+  "variant": "trigger h40 (All statuses)",
+  "route": "/apps",
+  "pick": "[...document.querySelectorAll('button,a')].find(b=>b.getBoundingClientRect().width>0&&b.innerText.trim().startsWith(\"All statuses\"))",
+  "states": [
+   "default",
+   "hover"
+  ]
+ },
+ {
+  "family": "Select",
+  "variant": "trigger h32 (All sources)",
+  "route": "/files",
+  "pick": "[...document.querySelectorAll('button,a')].find(b=>b.getBoundingClientRect().width>0&&b.innerText.trim().startsWith(\"All sources\"))",
+  "states": [
+   "default",
+   "hover"
+  ]
+ },
+ {
+  "family": "Select",
+  "variant": "model picker (Lite)",
+  "route": "/chat",
+  "pick": "[...document.querySelectorAll('button,a')].find(b=>b.getBoundingClientRect().width>0&&b.innerText.trim().startsWith(\"Lite\"))",
+  "states": [
+   "default",
+   "hover"
+  ]
+ },
+ {
+  "family": "Tabs",
+  "variant": "pill (Agents)",
+  "route": "/apps",
+  "pick": "document.querySelector('[role=tablist]')",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Tabs",
+  "variant": "pill (Video Studio)",
+  "route": "/video",
+  "pick": "document.querySelector('[role=tablist]')",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Tabs",
+  "variant": "segmented inside panel (Create/Edit)",
+  "route": "/video",
+  "pick": "[...document.querySelectorAll('button,a')].find(b=>b.getBoundingClientRect().width>0&&b.innerText.trim()===\"Create\")?.parentElement",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Tabs",
+  "variant": "underline right-aligned (Connectors)",
+  "route": "/integrations",
+  "pick": "document.querySelector('[role=tablist]')",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Tabs",
+  "variant": "category chips (Connectors)",
+  "route": "/integrations",
+  "pick": "[...document.querySelectorAll('button,a')].find(b=>b.getBoundingClientRect().width>0&&b.innerText.trim()===\"All categories\")?.parentElement",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Tabs",
+  "variant": "text filters (Team Pulse)",
+  "route": "/team-pulse",
+  "pick": "[...document.querySelectorAll('button')].find(b=>b.innerText.trim()==='Skills'&&!b.closest('nav,aside'))?.parentElement",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Tabs",
+  "variant": "pill (Discover)",
+  "route": "/discover",
+  "pick": "document.querySelector('[role=tablist]')",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Navigation",
+  "variant": "sidebar item active",
+  "route": "/apps",
+  "pick": "document.querySelector('a[href=\"/apps\"]')",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Navigation",
+  "variant": "sidebar item",
+  "route": "/apps",
+  "pick": "document.querySelector('a[href=\"/discover\"]')",
+  "states": [
+   "default",
+   "hover",
+   "focus-visible"
+  ]
+ },
+ {
+  "family": "Navigation",
+  "variant": "sidebar team footer",
+  "route": "/apps",
+  "pick": "[...document.querySelectorAll('button,a,div')].find(b=>b.childElementCount>0&&/Team plan/.test(b.innerText)&&b.getBoundingClientRect().height<80&&b.getBoundingClientRect().height>30)",
+  "states": [
+   "default",
+   "hover"
+  ]
+ },
+ {
+  "family": "Navigation",
+  "variant": "plan pill (Free plan | Upgrade)",
+  "route": "/chat",
+  "pick": "document.querySelector('a[href^=\"/pricing\"]')",
+  "states": [
+   "default",
+   "hover"
+  ]
+ },
+ {
+  "family": "Card",
+  "variant": "agent card (Discover)",
+  "route": "/discover",
+  "pick": "((t,h)=>{let e=[...document.querySelectorAll('body *')].find(x=>x.childElementCount===0&&x.getBoundingClientRect().width>0&&x.textContent.trim().toLowerCase().startsWith(t.toLowerCase()));while(e&&e!==document.body){const s=getComputedStyle(e);if((parseFloat(s.borderTopWidth)>0||(s.backgroundColor!=='rgba(0, 0, 0, 0)'&&s.backgroundColor!=='transparent'))&&e.getBoundingClientRect().height>=h)return e;e=e.parentElement}return null})(\"Thumbnail Reproducer\",150)",
+  "states": [
+   "default",
+   "hover"
+  ]
+ },
+ {
+  "family": "Card",
+  "variant": "connector card",
+  "route": "/integrations",
+  "pick": "((t,h)=>{let e=[...document.querySelectorAll('body *')].find(x=>x.childElementCount===0&&x.getBoundingClientRect().width>0&&x.textContent.trim().toLowerCase().startsWith(t.toLowerCase()));while(e&&e!==document.body){const s=getComputedStyle(e);if((parseFloat(s.borderTopWidth)>0||(s.backgroundColor!=='rgba(0, 0, 0, 0)'&&s.backgroundColor!=='transparent'))&&e.getBoundingClientRect().height>=h)return e;e=e.parentElement}return null})(\"Shopify\",60)",
+  "states": [
+   "default",
+   "hover"
+  ]
+ },
+ {
+  "family": "Card",
+  "variant": "featured connector card",
+  "route": "/integrations",
+  "pick": "((t,h)=>{let e=[...document.querySelectorAll('body *')].find(x=>x.childElementCount===0&&x.getBoundingClientRect().width>0&&x.textContent.trim().toLowerCase().startsWith(t.toLowerCase()));while(e&&e!==document.body){const s=getComputedStyle(e);if((parseFloat(s.borderTopWidth)>0||(s.backgroundColor!=='rgba(0, 0, 0, 0)'&&s.backgroundColor!=='transparent'))&&e.getBoundingClientRect().height>=h)return e;e=e.parentElement}return null})(\"Make every ad dollar\",80)",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Card",
+  "variant": "stat card (Team Pulse)",
+  "route": "/team-pulse",
+  "pick": "((t,h)=>{let e=[...document.querySelectorAll('body *')].find(x=>x.childElementCount===0&&x.getBoundingClientRect().width>0&&x.textContent.trim().toLowerCase().startsWith(t.toLowerCase()));while(e&&e!==document.body){const s=getComputedStyle(e);if((parseFloat(s.borderTopWidth)>0||(s.backgroundColor!=='rgba(0, 0, 0, 0)'&&s.backgroundColor!=='transparent'))&&e.getBoundingClientRect().height>=h)return e;e=e.parentElement}return null})(\"Team agents\",80)",
+  "states": [
+   "default",
+   "hover"
+  ]
+ },
+ {
+  "family": "Card",
+  "variant": "capability card (Chat)",
+  "route": "/chat",
+  "pick": "((t,h)=>{let e=[...document.querySelectorAll('body *')].find(x=>x.childElementCount===0&&x.getBoundingClientRect().width>0&&x.textContent.trim().toLowerCase().startsWith(t.toLowerCase()));while(e&&e!==document.body){const s=getComputedStyle(e);if((parseFloat(s.borderTopWidth)>0||(s.backgroundColor!=='rgba(0, 0, 0, 0)'&&s.backgroundColor!=='transparent'))&&e.getBoundingClientRect().height>=h)return e;e=e.parentElement}return null})(\"Generate video from a prompt\",150)",
+  "states": [
+   "default",
+   "hover"
+  ]
+ },
+ {
+  "family": "Card",
+  "variant": "promo card (Team Pulse on Chat)",
+  "route": "/chat",
+  "pick": "((t,h)=>{let e=[...document.querySelectorAll('body *')].find(x=>x.childElementCount===0&&x.getBoundingClientRect().width>0&&x.textContent.trim().toLowerCase().startsWith(t.toLowerCase()));while(e&&e!==document.body){const s=getComputedStyle(e);if((parseFloat(s.borderTopWidth)>0||(s.backgroundColor!=='rgba(0, 0, 0, 0)'&&s.backgroundColor!=='transparent'))&&e.getBoundingClientRect().height>=h)return e;e=e.parentElement}return null})(\"Curious what your teammates\",60)",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Notice",
+  "variant": "tip card (Agents)",
+  "route": "/apps",
+  "pick": "((t,h)=>{let e=[...document.querySelectorAll('body *')].find(x=>x.childElementCount===0&&x.getBoundingClientRect().width>0&&x.textContent.trim().toLowerCase().startsWith(t.toLowerCase()));while(e&&e!==document.body){const s=getComputedStyle(e);if((parseFloat(s.borderTopWidth)>0||(s.backgroundColor!=='rgba(0, 0, 0, 0)'&&s.backgroundColor!=='transparent'))&&e.getBoundingClientRect().height>=h)return e;e=e.parentElement}return null})(\"Team agents & skills are here\",60)",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Notice",
+  "variant": "chat tip (Chat)",
+  "route": "/chat",
+  "pick": "((t,h)=>{let e=[...document.querySelectorAll('body *')].find(x=>x.childElementCount===0&&x.getBoundingClientRect().width>0&&x.textContent.trim().toLowerCase().startsWith(t.toLowerCase()));while(e&&e!==document.body){const s=getComputedStyle(e);if((parseFloat(s.borderTopWidth)>0||(s.backgroundColor!=='rgba(0, 0, 0, 0)'&&s.backgroundColor!=='transparent'))&&e.getBoundingClientRect().height>=h)return e;e=e.parentElement}return null})(\"A chat that went well\",30)",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Empty state",
+  "variant": "zero data (Agents)",
+  "route": "/apps",
+  "pick": "((t,h)=>{let e=[...document.querySelectorAll('body *')].find(x=>x.childElementCount===0&&x.getBoundingClientRect().width>0&&x.textContent.trim().toLowerCase().startsWith(t.toLowerCase()));while(e&&e!==document.body){const s=getComputedStyle(e);if((parseFloat(s.borderTopWidth)>0||(s.backgroundColor!=='rgba(0, 0, 0, 0)'&&s.backgroundColor!=='transparent'))&&e.getBoundingClientRect().height>=h)return e;e=e.parentElement}return null})(\"No agents in this team yet\",150)",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Empty state",
+  "variant": "dropzone (Files)",
+  "route": "/files",
+  "pick": "((t,h)=>{let e=[...document.querySelectorAll('body *')].find(x=>x.childElementCount===0&&x.getBoundingClientRect().width>0&&x.textContent.trim().toLowerCase().startsWith(t.toLowerCase()));while(e&&e!==document.body){const s=getComputedStyle(e);if((parseFloat(s.borderTopWidth)>0||(s.backgroundColor!=='rgba(0, 0, 0, 0)'&&s.backgroundColor!=='transparent'))&&e.getBoundingClientRect().height>=h)return e;e=e.parentElement}return null})(\"Drag and drop files here\",150)",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Empty state",
+  "variant": "inline (Team Pulse)",
+  "route": "/team-pulse",
+  "pick": "((t,h)=>{let e=[...document.querySelectorAll('body *')].find(x=>x.childElementCount===0&&x.getBoundingClientRect().width>0&&x.textContent.trim().toLowerCase().startsWith(t.toLowerCase()));while(e&&e!==document.body){const s=getComputedStyle(e);if((parseFloat(s.borderTopWidth)>0||(s.backgroundColor!=='rgba(0, 0, 0, 0)'&&s.backgroundColor!=='transparent'))&&e.getBoundingClientRect().height>=h)return e;e=e.parentElement}return null})(\"No sharing activity\",40)",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Toggle",
+  "variant": "view toggle (Agents, 10px radius)",
+  "route": "/apps",
+  "pick": "[...document.querySelectorAll('button,a')].find(b=>/list view|grid view|list|grid/i.test(b.getAttribute('aria-label')||''))?.parentElement",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Toggle",
+  "variant": "view toggle (Files)",
+  "route": "/files",
+  "pick": "[...document.querySelectorAll('button,a')].find(b=>/Switch to/i.test(b.getAttribute('aria-label')||''))?.parentElement",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Badge",
+  "variant": "status RUNNING (Chat)",
+  "route": "/chat",
+  "pick": "[...document.querySelectorAll('span,div')].find(x=>x.childElementCount<=1&&x.innerText&&x.innerText.trim()===\"RUNNING\")",
+  "states": [
+   "default"
+  ]
+ },
+ {
+  "family": "Avatar",
+  "variant": "team avatar",
+  "route": "/apps",
+  "pick": "[...document.querySelectorAll('span')].find(s=>s.innerText.trim()==='D'&&s.getBoundingClientRect().width<40)",
+  "states": [
+   "default"
+  ]
+ }
+]
