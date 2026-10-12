@@ -19,7 +19,7 @@ It does not redesign the library.
   - **should:** reviewers push back, and an exception needs a reason.
   - **may:** allowed.
 - **Definition of done:** section 9. If every box there is checked, you are done. Otherwise you are not.
-- **How to run it:** the three skills in [product-to-paper](https://github.com/danielosagie/product-to-paper) (section 7).
+- **How to run it:** the `product-to-paper` skill in [product-to-paper](https://github.com/danielosagie/product-to-paper) (section 7).
 - **Paper file:** [Creao](https://app.paper.design/file/01M4P9ZN0ZXPM1SGSHNFM33MJ1): tokens, components, patterns, state matrix, live pulls and the prototype.
 
 ## 1. What we measured (the receipts behind this guideline)
@@ -335,13 +335,13 @@ A screen is not designed until every required state for its pattern is drawn in 
 
 ## 7. The process: two gates, Paper first
 
-Most of the drift in `compliance-audit.md` was not created by bad components. It came from designing in code, one screen at a time, with only the happy path drawn. The process moves every decision to before code, and puts a person at the two moments that matter. It runs as three skills and one CLI, published at [product-to-paper](https://github.com/danielosagie/product-to-paper) (install with `npx github:danielosagie/product-to-paper`):
+Most of the drift in `compliance-audit.md` was not created by bad components. It came from designing in code, one screen at a time, with only the happy path drawn. The process moves every decision to before code, and puts a person at the two moments that matter. It runs as one skill, `product-to-paper`, plus one CLI, published at [product-to-paper](https://github.com/danielosagie/product-to-paper) (install with `npx github:danielosagie/product-to-paper`). The skill has three stages:
 
-| Skill | What it does |
+| Stage | What it does |
 |---|---|
-| `pull-live` | `paper-pull` imports every live route into Paper as **editable, token-bound layers, full page**, at 1280 and 375, over plain CDP in background tabs. Never screenshots. |
-| `build-system` | Pulls `@theme` into Paper as the canon tokens, imports components in each state, binds every layer to a token, and lays out patterns and the state matrix on "00 System". |
-| `design-build-review` | Opus designs every state in Paper, Gate A, Codex builds, Opus walks it as a user and proposes fixes, Gate B, Codex fixes. |
+| Pull | `paper-pull` imports every live route into Paper as **editable, token-bound layers, full page**, at 1280 and 375, over plain CDP in background tabs. Never screenshots. |
+| System | Pulls `@theme` into Paper as the canon tokens, imports components in each state, binds every layer to a token, and lays out patterns and the state matrix on "00 System". |
+| Design | Opus designs every state in Paper, Gate A, Codex builds, Opus walks it as a user and proposes fixes, Gate B, Codex fixes. |
 
 ```
 G1 Pull ─▶ G2 Design (Opus, Paper) ─▶ G3 GATE A ─▶ G4 Build (Codex) ─▶ G5 Walk as a user (Opus) ─▶ G6 Propose ─▶ G7 GATE B ─▶ merge

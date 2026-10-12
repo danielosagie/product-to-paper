@@ -1,6 +1,6 @@
 # Worked example: Creao (agent.creao.ai), 2026-10-11
 
-One run of all three skills on a real product.
+One run of the `product-to-paper` skill, all three stages, on a real product.
 
 ## What was pulled
 - **Routes:** the JS bundle's router listed about 35 paths.

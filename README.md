@@ -2,11 +2,11 @@
 
 <img src="docs/demo.gif" width="100%" alt="A tour of the Creao boards in Paper: live pull, tokens, components, patterns, storyboard, ideas and the resume prototype">
 
-Agent skills and one CLI to take a live web product into [Paper](https://paper.design), and design new features in that product's own style:
+One agent skill and one CLI to take a live web product into [Paper](https://paper.design), and design new features in that product's own style. The skill runs in three stages:
 
-1. **pull-live** brings real pages and components into Paper as **editable layers**, not screenshots.
-2. **build-system** turns them into a design system: tokens, components with their states, layout patterns, a state matrix. Every layer is bound to the product's tokens.
-3. **design-build-review** designs a new feature from that system with Claude Opus, gates it with a person, builds it with Codex, then walks the build as a user and reviews it before a second gate.
+1. **Pull** brings real pages and components into Paper as **editable layers**, not screenshots.
+2. **System** turns them into a design system: tokens, components with their states, layout patterns, a state matrix. Every layer is bound to the product's tokens.
+3. **Design** creates a new feature from that system with Claude Opus, gates it with a person, builds it with Codex, then walks the build as a user and reviews it before a second gate.
 
 It was built and tested on [Creao](https://agent.creao.ai) (an AI agent OS). The full worked example, with numbers, is in [`examples/creao`](examples/creao).
 
@@ -16,7 +16,7 @@ It was built and tested on [Creao](https://agent.creao.ai) (an AI agent OS). The
 npx github:danielosagie/product-to-paper
 ```
 
-That's it. It copies the three skills into `~/.claude/skills` (and `~/.codex/skills` if you use Codex), and the same package runs the CLI: `npx -y github:danielosagie/product-to-paper pull --help`. Add `install --project` to install into `./.claude/skills` instead.
+That's it. It puts the `product-to-paper` skill in `~/.agents/skills` and symlinks it into `~/.claude/skills` (and `~/.codex/skills` if you use Codex), so rerunning the command updates every agent at once. The same package runs the CLI: `npx -y github:danielosagie/product-to-paper pull --help`. Add `install --project` to install into the current project instead.
 
 **The Creao run in Paper:** [open the file](https://app.paper.design/file/01M4P9ZN0ZXPM1SGSHNFM33MJ1)
 
@@ -103,8 +103,8 @@ You need all of this once per machine.
 | **A Chromium browser signed in to your product, with remote debugging on** | Chrome, Helium, Arc, Brave or Edge. Chrome: open `chrome://inspect/#remote-debugging` and allow it, or start it with `--remote-debugging-port=9222`. browser-use attaches the same way, so a session set up for browser-use already works. | `paper-pull` attaches over plain CDP, in background tabs, using your signed-in session. No browser extension is needed to drive it. |
 | **Paper Snapshot extension, installed** | Chrome Web Store, "Paper Snapshot" (id `lidfahaahiogmnlccifabccgplofocck`). Any local Chromium profile works. | `paper-pull` reads its serializer from disk and runs it over CDP. It only needs to be installed, not active. |
 | **Node 20+** | The install command above. `paper-pull` runs through `npx`, nothing to link. | The one CLI: runs the Paper import over pages and elements, token-bound. |
-| Optional: **Codex CLI** | `codex exec -m gpt-6.1-sol …` | The builder in design-build-review. |
-| Optional: **Mobbin MCP** | Add the Mobbin server, then sign in from your agent (`/mcp` in Claude Code). | Inspiration in design-build-review. |
+| Optional: **Codex CLI** | `codex exec -m gpt-6.1-sol …` | The builder in the Design stage. |
+| Optional: **Mobbin MCP** | Add the Mobbin server, then sign in from your agent (`/mcp` in Claude Code). | Inspiration in the Design stage. |
 | Optional: **iOS Simulator + serve-sim** | Xcode, then `npx serve-sim`. | The mobile walk in real WebKit. |
 
 **Keep 5 GB of disk free.** On a 16 GB Mac, swap reached 17.9 of 19.5 GB and the disk briefly hit zero mid-run. `paper-pull` refuses to start below 5 GB free.
@@ -125,13 +125,13 @@ Every import:
 - is bound to your Paper tokens on the way in (colors, sizes, radius, spacing, fonts),
 - prints its drift: the values that didn't match any token.
 
-| Skill | Produces |
+| Stage | Produces |
 |---|---|
-| `pull-live` | Page "Live screens": every route × 1280 and 375, editable and token-bound |
-| `build-system` | Page "00 System": tokens, components × states, layout patterns, state matrix |
-| `design-build-review` | A prototype page per feature, Gate A, Codex build, walk on desktop and iOS, Gate B |
+| Pull | Page "Live screens": every route × 1280 and 375, editable and token-bound |
+| System | Page "00 System": tokens, components × states, layout patterns, state matrix |
+| Design | A prototype page per feature, Gate A, Codex build, walk on desktop and iOS, Gate B |
 
-## Design rules the skills enforce
+## Design rules the skill enforces
 
 These came from review of the Creao run and are written into every design brief:
 
@@ -164,9 +164,7 @@ These came from review of the Creao run and are written into every design brief:
 ## Layout
 
 ```
-skills/pull-live/SKILL.md
-skills/build-system/SKILL.md
-skills/design-build-review/SKILL.md
+skills/product-to-paper/SKILL.md   the skill
 bin/                the npx installer (and `pull`, which runs paper-pull)
 cli/                paper-pull, the one CLI
 examples/creao/     the worked example: guideline, audit, element spec, routes, story file, probe

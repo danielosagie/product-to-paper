@@ -1,14 +1,16 @@
 #!/usr/bin/env node
-// One command: `npx github:danielosagie/product-to-paper` installs the skills.
+// One command: `npx github:danielosagie/product-to-paper` installs the skill.
+// One copy lives in ~/.agents/skills; Claude and Codex get symlinks to it.
 // `... pull <args>` runs paper-pull, so nothing else needs installing.
-import { cp, mkdir, readdir, stat } from 'node:fs/promises';
+import { cp, mkdir, rm, symlink, lstat } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+const SKILL = 'product-to-paper';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const [command = 'install', ...rest] = process.argv.slice(2);
-const exists = path => stat(path).then(() => true, () => false);
+const exists = path => lstat(path).then(() => true, () => false);
 
 if (command === 'pull') {
   process.argv = [process.argv[0], 'paper-pull', ...rest];
@@ -16,25 +18,30 @@ if (command === 'pull') {
   const { run } = await import('../cli/lib/cli.mjs');
   await run(main);
 } else if (command === 'install') {
-  const targets = [rest.includes('--project') ? join(process.cwd(), '.claude/skills') : join(homedir(), '.claude/skills')];
-  if (!rest.includes('--project') && await exists(join(homedir(), '.codex'))) targets.push(join(homedir(), '.codex/skills'));
-  const skills = await readdir(join(root, 'skills'));
-  for (const target of targets) {
-    await mkdir(target, { recursive: true });
-    for (const skill of skills) await cp(join(root, 'skills', skill), join(target, skill), { recursive: true, force: true });
-    console.log(`Installed ${skills.join(', ')} -> ${target}`);
+  const base = rest.includes('--project') ? process.cwd() : homedir();
+  const canonical = join(base, '.agents/skills', SKILL);
+  await rm(canonical, { recursive: true, force: true });
+  await mkdir(dirname(canonical), { recursive: true });
+  await cp(join(root, 'skills', SKILL), canonical, { recursive: true });
+  console.log(`Installed ${SKILL} -> ${canonical}`);
+  const agents = ['.claude'];
+  if (await exists(join(base, '.codex'))) agents.push('.codex');
+  for (const agent of agents) {
+    const link = join(base, agent, 'skills', SKILL);
+    await mkdir(dirname(link), { recursive: true });
+    await rm(link, { recursive: true, force: true });
+    await symlink(canonical, link, 'dir');
+    console.log(`Linked ${link} -> ${canonical}`);
   }
   console.log(`
 Next:
   1. Open Paper desktop with your file, then: export PAPER_FILE_ID=<id from app.paper.design/file/<id>>
   2. Sign in to your product in Chrome or Helium, and allow chrome://inspect/#remote-debugging
   3. Install the "Paper Snapshot" extension in that browser
-  4. Ask your agent: "use pull-live on https://your.app"
-
-paper-pull runs as: npx -y github:danielosagie/product-to-paper pull --help`);
+  4. Ask your agent: "use product-to-paper on https://your.app"`);
 } else {
   console.log(`Usage:
-  npx github:danielosagie/product-to-paper            install the skills (~/.claude/skills, and ~/.codex/skills if present)
-  npx github:danielosagie/product-to-paper install --project   install into ./.claude/skills
-  npx github:danielosagie/product-to-paper pull ...   run paper-pull`);
+  npx github:danielosagie/product-to-paper                    install the skill (~/.agents/skills, linked into ~/.claude and ~/.codex)
+  npx github:danielosagie/product-to-paper install --project  install into this project
+  npx github:danielosagie/product-to-paper pull ...           run paper-pull`);
 }
