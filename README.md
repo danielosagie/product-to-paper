@@ -1,5 +1,7 @@
 # product-to-paper
 
+<img src="docs/demo.gif" width="100%" alt="A tour of the Creao boards in Paper: live pull, tokens, components, patterns, storyboard, ideas and the resume prototype">
+
 Agent skills and one CLI to take a live web product into [Paper](https://paper.design), and design new features in that product's own style:
 
 1. **pull-live** brings real pages and components into Paper as **editable layers**, not screenshots.
