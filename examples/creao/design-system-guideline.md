@@ -335,7 +335,7 @@ A screen is not designed until every required state for its pattern is drawn in 
 
 ## 7. The process: two gates, Paper first
 
-Most of the drift in `compliance-audit.md` was not created by bad components. It came from designing in code, one screen at a time, with only the happy path drawn. The process moves every decision to before code, and puts a person at the two moments that matter. It runs as three skills and one CLI, published at [product-to-paper](https://github.com/danielosagie/product-to-paper) (copy `skills/*` to `.claude/skills/`):
+Most of the drift in `compliance-audit.md` was not created by bad components. It came from designing in code, one screen at a time, with only the happy path drawn. The process moves every decision to before code, and puts a person at the two moments that matter. It runs as three skills and one CLI, published at [product-to-paper](https://github.com/danielosagie/product-to-paper) (install with `npx github:danielosagie/product-to-paper`):
 
 | Skill | What it does |
 |---|---|
