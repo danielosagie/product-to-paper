@@ -5,8 +5,7 @@ token-bound layers. Requires Node 20+, Paper Desktop, and the Paper Snapshot
 extension installed in any local Chromium profile.
 
 ```sh
-npm install
-npm link
+alias paper-pull="npx -y github:danielosagie/product-to-paper pull"
 paper-pull https://example.com/ --file <paper-file-id>
 paper-pull --base https://example.com --routes routes.txt --widths 1280,375 --file <id>
 paper-pull --scan --base https://example.com --max 5 --file <id>

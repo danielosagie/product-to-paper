@@ -5,6 +5,8 @@ description: Build a product's design system in Paper from what actually ships. 
 
 # build-system
 
+`paper-pull` below is `npx -y github:danielosagie/product-to-paper pull` (installed by `npx github:danielosagie/product-to-paper`).
+
 The result is one Paper page, **"00 System"**, where every layer is bound to a token. It holds:
 - the token sheet,
 - the live components in each of their states,

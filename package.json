@@ -1,0 +1,32 @@
+{
+  "name": "product-to-paper",
+  "version": "0.2.0",
+  "description": "Pull a live product into Paper as editable, token-bound layers, build its design system, and design new features in its style. Agent skills plus the paper-pull CLI.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielosagie/product-to-paper.git"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "product-to-paper": "bin/product-to-paper.mjs",
+    "paper-pull": "cli/paper-pull.mjs"
+  },
+  "files": [
+    "bin",
+    "cli/paper-pull.mjs",
+    "cli/lib",
+    "cli/elements.example.json",
+    "skills"
+  ],
+  "scripts": {
+    "test": "node --test cli/test/*.test.mjs"
+  },
+  "dependencies": {
+    "acorn": "^8.15.0",
+    "playwright-core": "^1.64.0"
+  }
+}

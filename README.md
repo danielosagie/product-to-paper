@@ -10,6 +10,14 @@ Agent skills and one CLI to take a live web product into [Paper](https://paper.d
 
 It was built and tested on [Creao](https://agent.creao.ai) (an AI agent OS). The full worked example, with numbers, is in [`examples/creao`](examples/creao).
 
+## Install
+
+```bash
+npx github:danielosagie/product-to-paper
+```
+
+That's it. It copies the three skills into `~/.claude/skills` (and `~/.codex/skills` if you use Codex), and the same package runs the CLI: `npx -y github:danielosagie/product-to-paper pull --help`. Add `install --project` to install into `./.claude/skills` instead.
+
 **The Creao run in Paper:** [open the file](https://app.paper.design/file/01M4P9ZN0ZXPM1SGSHNFM33MJ1)
 
 ## Tour
@@ -94,12 +102,10 @@ You need all of this once per machine.
 | **Paper file id** | Copy it from the file URL `app.paper.design/file/<id>/…`, then `export PAPER_FILE_ID=<id>`. | `paper-pull` writes to this file and refuses to touch another. |
 | **A Chromium browser signed in to your product, with remote debugging on** | Chrome, Helium, Arc, Brave or Edge. Chrome: open `chrome://inspect/#remote-debugging` and allow it, or start it with `--remote-debugging-port=9222`. browser-use attaches the same way, so a session set up for browser-use already works. | `paper-pull` attaches over plain CDP, in background tabs, using your signed-in session. No browser extension is needed to drive it. |
 | **Paper Snapshot extension, installed** | Chrome Web Store, "Paper Snapshot" (id `lidfahaahiogmnlccifabccgplofocck`). Any local Chromium profile works. | `paper-pull` reads its serializer from disk and runs it over CDP. It only needs to be installed, not active. |
-| **Node 20+** and `paper-pull` | `cd cli && npm i && npm link` | The one CLI: runs the Paper import over pages and elements, token-bound. |
+| **Node 20+** | The install command above. `paper-pull` runs through `npx`, nothing to link. | The one CLI: runs the Paper import over pages and elements, token-bound. |
 | Optional: **Codex CLI** | `codex exec -m gpt-6.1-sol …` | The builder in design-build-review. |
 | Optional: **Mobbin MCP** | Add the Mobbin server, then sign in from your agent (`/mcp` in Claude Code). | Inspiration in design-build-review. |
 | Optional: **iOS Simulator + serve-sim** | Xcode, then `npx serve-sim`. | The mobile walk in real WebKit. |
-
-**Install the skills:** copy `skills/*` into `~/.claude/skills/` (every project) or `<repo>/.claude/skills/` (one project).
 
 **Keep 5 GB of disk free.** On a 16 GB Mac, swap reached 17.9 of 19.5 GB and the disk briefly hit zero mid-run. `paper-pull` refuses to start below 5 GB free.
 
@@ -108,6 +114,7 @@ You need all of this once per machine.
 There is one CLI, because importing is the only repetitive part. Everything else is judgment, and the skills tell the agent how to do it through Paper's MCP.
 
 ```bash
+alias paper-pull="npx -y github:danielosagie/product-to-paper pull"
 paper-pull --scan --base https://app.example.com --bundle https://app.example.com/assets/index-XXXX.js   # which routes render
 paper-pull --base https://app.example.com --routes routes.txt --widths 1280,375 --max 10              # import pages
 paper-pull --base https://app.example.com --spec elements.json --page "00 System"                     # import components and states
@@ -160,6 +167,7 @@ These came from review of the Creao run and are written into every design brief:
 skills/pull-live/SKILL.md
 skills/build-system/SKILL.md
 skills/design-build-review/SKILL.md
+bin/                the npx installer (and `pull`, which runs paper-pull)
 cli/                paper-pull, the one CLI
 examples/creao/     the worked example: guideline, audit, element spec, routes, story file, probe
 docs/               the demo GIF and board images

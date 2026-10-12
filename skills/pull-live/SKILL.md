@@ -5,6 +5,8 @@ description: Pull a live web product into Paper as editable, token-bound layers 
 
 # pull-live
 
+`paper-pull` below is `npx -y github:danielosagie/product-to-paper pull` (installed by `npx github:danielosagie/product-to-paper`).
+
 The result is a Paper page, "Live screens", holding every real route at 1280 and 375. Each one is full height, editable and bound to the product's tokens.
 
 ## Preflight (stop if any fails)
